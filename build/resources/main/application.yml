@@ -1,0 +1,77 @@
+# =========================================
+# BASE APPLICATION CONFIGURATION
+# =========================================
+# This file is always loaded regardless of profile.
+# Profile-specific files (e.g. application-dev.yml)
+# will OVERRIDE values defined here.
+
+spring:
+  application:
+    name: note-summary-service
+
+  # -----------------------------------------
+  # KAFKA CONFIGURATION (SHARED DEFAULTS)
+  # -----------------------------------------
+  # This defines how the app connects to Kafka.
+  # MUST be under 'spring.kafka' or Spring ignores it.
+  kafka:
+#    bootstrap-servers: localhost:9092
+    bootstrap-servers: pkc-41wq6.eu-west-2.aws.confluent.cloud:9092
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+
+      sasl.jaas.config: >
+        org.apache.kafka.common.security.plain.PlainLoginModule required
+        username="45RFFUY3K4VIJ676"
+        password="cfltYWjWkOpVGkR1tTKIyOMyDTRP3UfWX3o9rQUm+BwqRsf05UlrVzgGsRvYiwIg";
+
+
+    consumer:
+      # Every Kafka consumer MUST belong to a group
+      group-id: note_summary_service_group
+
+      # If no offset exists, start from earliest messages
+      auto-offset-reset: earliest
+
+      # JSON deserialization for incoming messages
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+      properties:
+        # Allow deserialization of all packages (safe for dev, restrict in prod)
+        spring.json.trusted.packages: "*"
+
+        # This is to enable very large payloads pass
+        fetch.max.bytes: 209715200
+        max.partition.fetch.bytes: 209715200
+
+    producer:
+      # JSON serialization for outgoing messages
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+      # This is to enable very large payloads pass
+      properties:
+        max.request.size: 209715200
+        buffer.memory: 335544320        # 320MB buffer to handle large messages
+        compression.type: gzip          # strongly recommended
+        request.timeout.ms: 60000
+        delivery.timeout.ms: 120000
+
+
+# -----------------------------------------
+# SECURITY CONFIGURATION
+# -----------------------------------------
+# Used by your JWT decoder config
+security:
+  jwt:
+    secret: super-secret-dev-key-change-me
+
+
+# -----------------------------------------
+# MANAGEMENT / ACTUATOR
+# -----------------------------------------
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,loggers

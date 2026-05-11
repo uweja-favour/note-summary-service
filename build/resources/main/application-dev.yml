@@ -1,0 +1,49 @@
+spring:
+  threads:
+    virtual:
+      enabled: true
+
+  data:
+    mongodb:
+      uri: mongodb+srv://dbUser:Password123Password@cluster0.fiw5cvi.mongodb.net/note_summary_service_db?retryWrites=true&w=majority&appName=Cluster0
+
+  webflux:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+  codec:
+    max-in-memory-size: 500MB
+
+transaction:
+  default-timeout: 30s
+
+server:
+  port: 8086
+
+# -----------------------------------------
+# OPENAI CONFIG (Sensitive - should be env var in real systems)
+# -----------------------------------------
+
+openai:
+  api:
+    key: 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
+
+anthropic:
+  api:
+    key: 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
+
+# -----------------------------------------
+# SECURITY OVERRIDES (DEV ONLY)
+# -----------------------------------------
+security:
+  auth:
+    enabled: true
+
+  jwt:
+    accessSecret: asdfsdfarwegrsKLSAHAKBIUUIBuseweDOIy8b_)@#r43243234sadfew23fsxcasdfq32refwasegsade234ew
+    refreshSecret: asdijfpeiwrAW3OSI9823JKKSokls0(U2w30(*IUNskajfwke2939sdf9aww9edsafds3wrwaeasdfa34sewe
+    access-token:
+      expiration-ms: 900000
+    refresh-token:
+      expiration-ms: 2592000000
