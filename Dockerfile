@@ -7,8 +7,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN ./gradlew :note-summary-service:bootJar --no-daemon
-
+RUN chmod +x gradlew && ./gradlew bootJar --no-daemon
 
 # ─────────────────────────────────────────────
 # 2. RUNTIME STAGE
@@ -17,9 +16,9 @@ FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
-COPY --from=build /app/note-summary-service/build/libs/*.jar app.jar
+COPY --from=build /app/build/libs/*.jar app.jar
 
-EXPOSE 8080
+EXPOSE 8082
 
-# FORCE dev profile (equivalent to your bootRun command)
+# FORCE dev profile (equivalent to bootRun --args)
 ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=$PORT --spring.profiles.active=dev"]
