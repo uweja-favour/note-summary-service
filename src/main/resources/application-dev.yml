@@ -32,7 +32,7 @@ anthropic:
 openai:
   api:
     key: ${GPT_API_KEY}
-    
+
 # -----------------------------------------
 # SECURITY OVERRIDES (DEV ONLY)
 # -----------------------------------------
