@@ -2,9 +2,9 @@ package com.xapps.note_summary.application.generation
 
 import com.xapps.model.DeliveryStatus
 import com.xapps.model.FileType
+import com.xapps.model.NoteSummaryStyle
 import com.xapps.note_summary.application.useronline.policy.DeliverPendingNoteSummaryPolicy
 import com.xapps.note_summary.domain.NoteSummaryFactory
-import com.xapps.note_summary.domain.model.NoteSummaryStyle
 import com.xapps.note_summary.domain.model.PendingNoteSummary
 import com.xapps.note_summary.domain.repository.NoteSummaryDraftRepository
 import com.xapps.note_summary.domain.repository.NoteSummaryRepository
@@ -19,10 +19,12 @@ import com.xapps.note_summary.infrastructure.prompt_builder.NoteSummaryPromptBui
 import com.xapps.platform.core.outcome.onFailure
 import com.xapps.platform.core.outcome.outcomeOf
 import com.xapps.platform.core.string.generateUniqueId
+import com.xapps.question_generation.JobId
 import org.springframework.stereotype.Component
 
 data class GenerateNoteSummaryCommand(
     val noteSummaryId: String,
+    val jobId: JobId,
     val fileKey: ObjectKey,
     val style: NoteSummaryStyle,
     val userId: String,

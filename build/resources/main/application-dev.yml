@@ -19,19 +19,19 @@ transaction:
   default-timeout: 30s
 
 server:
-  port: 8086
+  port: ${PORT:8082}
 
 # -----------------------------------------
 # OPENAI CONFIG (Sensitive - should be env var in real systems)
 # -----------------------------------------
 
-openai:
-  api:
-    key: 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
-
 anthropic:
   api:
-    key: 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
+    key: ${CLAUDE_API_KEY}
+
+openai:
+  api:
+    key: ${GPT_API_KEY}
 
 # -----------------------------------------
 # SECURITY OVERRIDES (DEV ONLY)

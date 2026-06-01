@@ -2,6 +2,7 @@ package com.xapps.note_summary.api.controller
 
 import com.xapps.dto.EmptyResponse
 import com.xapps.dto.IdHolder
+import com.xapps.dto.job.JobDTO
 import com.xapps.note_summary.api.dto.CreateNoteSummaryRequest
 import com.xapps.note_summary.application.ack.NoteSummaryAcknowledgementService
 import com.xapps.note_summary.application.generation.NoteSummaryCreationOrchestrator
@@ -29,7 +30,7 @@ class NoteSummaryController(
     )
     suspend fun createNoteSummary(
         @RequestBody request: CreateNoteSummaryRequest
-    ): EmptyResponse =
+    ): JobDTO =
         handle("createNoteSummary") {
             val principal = getAuthenticatedUserPrincipal()
 
@@ -37,8 +38,6 @@ class NoteSummaryController(
                 userId = principal.userId,
                 request = request
             )
-
-            EmptyResponse()
         }
 
     @PostMapping(

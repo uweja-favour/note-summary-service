@@ -1,6 +1,6 @@
 package com.xapps.note_summary.infrastructure.prompt_builder
 
-import com.xapps.note_summary.domain.model.NoteSummaryStyle
+import com.xapps.model.NoteSummaryStyle
 import com.xapps.note_summary.infrastructure.prompt_builder.summary_instruction_policy.SummaryInstructionPolicyFactory
 import org.springframework.stereotype.Component
 

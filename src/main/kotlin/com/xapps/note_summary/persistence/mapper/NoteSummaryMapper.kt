@@ -1,7 +1,7 @@
 package com.xapps.note_summary.persistence.mapper
 
+import com.xapps.model.NoteSummaryStyle
 import com.xapps.note_summary.domain.model.NoteSummary
-import com.xapps.note_summary.domain.model.NoteSummaryStyle
 import com.xapps.note_summary.persistence.entity.NoteSummaryDocument
 import org.springframework.stereotype.Component
 

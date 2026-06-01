@@ -1,7 +1,7 @@
 package com.xapps.note_summary.persistence.entity
 
+import com.xapps.model.NoteSummaryStyleCode
 import com.xapps.model.TaskDraftStatusCode
-import com.xapps.note_summary.domain.model.NoteSummaryStyleCode
 import com.xapps.note_summary.persistence.BasePersistableEntity
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

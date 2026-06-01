@@ -1,6 +1,7 @@
 package com.xapps.note_summary.domain.model
 
 import com.xapps.model.FileType
+import com.xapps.model.NoteSummaryStyle
 import com.xapps.model.TaskDraftStatus
 import com.xapps.note_summary.infrastructure.object_store.ObjectKey
 

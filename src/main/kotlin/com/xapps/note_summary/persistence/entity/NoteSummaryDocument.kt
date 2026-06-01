@@ -1,6 +1,6 @@
 package com.xapps.note_summary.persistence.entity
 
-import com.xapps.note_summary.domain.model.NoteSummaryStyleCode
+import com.xapps.model.NoteSummaryStyleCode
 import com.xapps.note_summary.persistence.BasePersistableEntity
 import com.xapps.time.types.KotlinInstant
 import org.springframework.data.annotation.Id

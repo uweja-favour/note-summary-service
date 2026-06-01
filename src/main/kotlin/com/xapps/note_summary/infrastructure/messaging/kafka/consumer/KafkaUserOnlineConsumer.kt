@@ -27,7 +27,7 @@ class KafkaUserOnlineConsumer(
     )
     fun handle(payload: ByteArray) {
 
-        log.info("Received user online event: $payload")
+        log.info("Received user online event: ${payload.contentToString()}")
 
         val event = compressionService.decompress(
             UserOnlineEvent.serializer(),

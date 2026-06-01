@@ -1,9 +1,9 @@
 package com.xapps.note_summary.persistence.mapper
 
 import com.xapps.model.FileType
+import com.xapps.model.NoteSummaryStyle
 import com.xapps.model.TaskDraftStatus
 import com.xapps.note_summary.domain.model.NoteSummaryDraft
-import com.xapps.note_summary.domain.model.NoteSummaryStyle
 import com.xapps.note_summary.persistence.entity.NoteSummaryDraftDocument
 import org.springframework.stereotype.Component
 
